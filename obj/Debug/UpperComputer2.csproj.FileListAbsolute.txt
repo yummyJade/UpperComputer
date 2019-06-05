@@ -1,0 +1,10 @@
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\UpperComputer2.exe.config
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\UpperComputer2.exe
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\UpperComputer2.pdb
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csprojAssemblyReference.cache
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.Form1.resources
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.Properties.Resources.resources
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csproj.GenerateResource.cache
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csproj.CoreCompileInputs.cache
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.exe
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.pdb
