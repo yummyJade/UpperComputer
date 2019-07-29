@@ -8,3 +8,12 @@ D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csproj.Ge
 D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csproj.CoreCompileInputs.cache
 D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.exe
 D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.pdb
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.DirectInput.dll
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.dll
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.pdb
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.DirectInput.pdb
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.DirectInput.xml
+D:\项目\VisualStudioProjects\UpperComputer2\obj\Debug\UpperComputer2.csproj.CopyComplete
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.XInput.dll
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.XInput.pdb
+D:\项目\VisualStudioProjects\UpperComputer2\bin\Debug\SharpDX.XInput.xml
