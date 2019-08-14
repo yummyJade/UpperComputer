@@ -56,6 +56,7 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -191,42 +192,41 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 82);
+            this.label8.Location = new System.Drawing.Point(5, 82);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 15);
+            this.label8.Size = new System.Drawing.Size(82, 15);
             this.label8.TabIndex = 5;
-            this.label8.Text = "z";
+            this.label8.Text = "摄像头角度";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(28, 47);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 15);
+            this.label7.Size = new System.Drawing.Size(37, 15);
             this.label7.TabIndex = 4;
-            this.label7.Text = "y";
+            this.label7.Text = "电压";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(28, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 15);
+            this.label6.Size = new System.Drawing.Size(37, 15);
             this.label6.TabIndex = 3;
-            this.label6.Text = "x";
+            this.label6.Text = "水深";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(72, 79);
+            this.textBox3.Location = new System.Drawing.Point(93, 79);
             this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(100, 25);
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "82";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(72, 44);
+            this.textBox2.Location = new System.Drawing.Point(93, 44);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 25);
@@ -236,7 +236,7 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Location = new System.Drawing.Point(72, 8);
+            this.textBox1.Location = new System.Drawing.Point(93, 8);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(100, 25);
@@ -304,11 +304,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(84, 457);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "旋转";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(993, 600);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -361,6 +372,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

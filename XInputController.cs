@@ -61,7 +61,7 @@ namespace UpperComputer2
             leftThumb.Y = (Math.Abs((float)gamepad.LeftThumbY) < deadband) ? 0 : (float)gamepad.LeftThumbY / short.MaxValue * 100;
             rightThumb.Y = (Math.Abs((float)gamepad.RightThumbX) < deadband) ? 0 : (float)gamepad.RightThumbX /  short.MinValue* -100;
             rightThumb.X = (Math.Abs((float)gamepad.RightThumbY) < deadband) ? 0 : (float)gamepad.RightThumbY / short.MaxValue * 100;
-            pLeft = leftThumb;
+           pLeft = leftThumb;
             pRight = rightThumb;
             leftTrigger = (float)Math.Ceiling((float)gamepad.LeftTrigger/256 * 90);
             rightTrigger = (float)Math.Ceiling((float)gamepad.RightTrigger / 256 * 90);

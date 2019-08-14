@@ -33,7 +33,7 @@ namespace UpperComputer2
 
             //设置默认值
             comboBox1.Text = "COM3";
-            comboBox2.Text = "115200";
+            comboBox2.Text = "57600";
             //comboBox2.Text = "9600";
             comboBox3.Text = "8";
             comboBox4.Text = "None";
@@ -356,7 +356,7 @@ namespace UpperComputer2
         {
 
         }
-        public int liCount = 0;
+        public int liCount = 1;
         /// <summary>
         /// 定时器处理
         /// </summary>
@@ -380,101 +380,104 @@ namespace UpperComputer2
             Console.WriteLine("rightx:" + pRight.X + " righty:" + pRight.Y);
             Console.WriteLine("leftt:" + tLeft + " rightt:" + tRight);
             //向下位机发送控制指令
-            byte[] li;
+            byte li = 0xFF;
+            string str4 = "";
+            string lastInput = "";
+            bool locker = false;
             if (input == "li")
             {
-                Console.WriteLine("sssssssssssssssssss");
+                //if (!locker)
+                //{
+                //    li = Convert.ToByte(liCount);
+                //    locker = true;
+                //}
 
                 liCount++;
                 if (liCount == 1)
                 {
-                    li = BitConverter.GetBytes(0);
+                    li = Convert.ToByte(0);
                 }
                 else
                 {
-                    li = BitConverter.GetBytes(1);
+                    li = Convert.ToByte(1);
                     liCount = 0;
                 }
+
+                str4 = "li";
+                //lastInput = input;
             }
+            else if (input == "sr")
+            {
+                li = Convert.ToByte(1);
+                str4 = "st";
+            }
+            else if (input == "st")
+            {
+                li = Convert.ToByte(0);
+                str4 = "st";
+            }
+            else if (input == "sa")
+            {
+                
+                li = Convert.ToByte(2);
+                str4 = "st";
+
+                //}else if(input == "None")
+                //{
+                //    if (locker)
+                //    {
+                //        if (liCount == 1)
+                //        {
+                //            liCount = 0;
+                //        }
+                //        else
+                //        {
+
+                //            liCount = 1;
+                //        }
+                //        locker = false;
+                //    }
+
+
+            }
+
+            if (input != "None")
+            {
+                
+                sendOrder(li, 0, 0, str4);
+            }
+            //Console.WriteLine("liCount="+ liCount);
+
+            //Console.WriteLine("locker=" + locker);
 
             //字符串指令
 
 
-            string str1 = "ol";
-            string str2 = "or";
+            string str1 = "ot";
+            tLeft = 128 - tLeft;
+            tRight = tRight + 128 ;
             byte data_ol = Convert.ToByte(tLeft);
-
             byte data_or = Convert.ToByte(tRight);
-                
-
-
             byte[] data2_ol = new byte[] { data_ol, 0, 0 };
             byte[] data2_or = new byte[] { data_or, 0, 0 };
             byte[] data1_ol = Encoding.Default.GetBytes(str1);
 
-            byte[] data3_ol = new byte[data1_ol.Length + data2_ol.Length];
-            Array.Copy(data1_ol, 0, data3_ol, 0, data1_ol.Length);
-            Array.Copy(data2_ol, 0, data3_ol, data1_ol.Length, data2_ol.Length);
-            serialPort1.Write(data3_ol, 0, data3_ol.Length);
 
 
 
-            byte[] data1_or = Encoding.Default.GetBytes(str2);
 
-            byte[] data3_or = new byte[data1_or.Length + data2_or.Length];
-            Array.Copy(data1_or, 0, data3_or, 0, data1_or.Length);
-            Array.Copy(data2_or, 0, data3_or, data1_or.Length, data2_or.Length);
-            serialPort1.Write(data3_or, 0, data3_or.Length);
-
-
-            //转sbyte
-            sbyte[] mySByte = new sbyte[data3_or.Length];
-
-            for (int i = 0; i < data3_or.Length; i++)
+            if(tLeft != 128)
             {
-                if (data3_or[i] > 127)
-                    mySByte[i] = (sbyte)(data3_or[i] - 256);
-                else
-                    mySByte[i] = (sbyte)data3_or[i];
+
+                sendOrder(data_ol, 0, 0, str1);
+            }
+            else
+            {
+                sendOrder(data_or, 0, 0, str1);
             }
 
 
-            //if (pLeft.Y > 100)
-            //{
-            //    pLeft.Y = 100;
-            //}
-            //else if (pLeft.Y < -100)
-            //{
-            //    pLeft.Y = -100;
-            //}
-            //else if (pRight.X > 100)
-            //{
-            //    pRight.X = 100;
-            //}
-            //else if (pRight.X < -100)
-            //{
-            //    pRight.X = -100;
-            //}
-            //else if (pRight.Y > 100)
-            //{
-            //    pRight.X = 100;
-            //}
-            //else if (pRight.Y < -100)
-            //{
-            //    pRight.X = -100;
-            //}
-
-            //string str3 = "mv";
-            //sbyte data_z = Convert.ToSByte(pLeft.Y);
-            //sbyte data_x = Convert.ToSByte(pRight.X);
-            //sbyte data_y = Convert.ToSByte(pRight.Y);
-            //sbyte[] data5 = new byte[] { data_x, data_y, data_z };
-            //sbyte[] data4 = Encoding.Default.GetBytes(str3);
-
-            //byte[] data6 = new byte[data4.Length + data5.Length];
-            //Array.Copy(data4, 0, data6, 0, data4.Length);
-            //Array.Copy(data5, 0, data6, data4.Length, data5.Length);
-            //serialPort1.Write(data6, 0, data6.Length);
+            sendOrder(pRight.Y + 128, pRight.X + 128, pLeft.X + 128, "mv");
 
 
             //向小车发送控制指令
@@ -493,7 +496,31 @@ namespace UpperComputer2
             //}
         }
 
-        
+        private void sendOrder(float x, float y, float z,string str3)
+        {
+            byte data_x = Convert.ToByte(x);
+            byte data_y = Convert.ToByte(y);
+            byte data_z = Convert.ToByte(z);
+            byte[] data5 = new byte[] { data_x, data_y, data_z };
+            byte[] data4 = Encoding.Default.GetBytes(str3);
+            byte[] data6 = new byte[data4.Length + data5.Length];
+            Array.Copy(data4, 0, data6, 0, data4.Length);
+            Array.Copy(data5, 0, data6, data4.Length, data5.Length);
+            serialPort1.Write(data6, 0, data6.Length);
+        }
+        private void sendOrder(string x, float y, float z, string str3)
+        {
+            byte data_x = Convert.ToByte(x);
+            byte data_y = Convert.ToByte(y);
+            byte data_z = Convert.ToByte(z);
+            byte[] data5 = new byte[] { data_x, data_y, data_z };
+            byte[] data4 = Encoding.Default.GetBytes(str3);
+            byte[] data6 = new byte[data4.Length + data5.Length];
+            Array.Copy(data4, 0, data6, 0, data4.Length);
+            Array.Copy(data5, 0, data6, data4.Length, data5.Length);
+            serialPort1.Write(data6, 0, data6.Length);
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -519,6 +546,11 @@ namespace UpperComputer2
                 downnum = false;
             }
 
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            sendOrder(textBox3.Text, 0, 0, "ca");
         }
 
     }
